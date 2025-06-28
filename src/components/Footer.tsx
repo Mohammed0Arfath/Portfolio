@@ -34,7 +34,7 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
             <Heart className="w-4 h-4 text-red-500" fill="currentColor" />
             <span>and</span>
             <Code2 className="w-4 h-4 text-blue-500" />
-            <span>by Mohammed Arfath © 2024</span>
+            <span>by Mohammed Arfath © 2025</span>
           </div>
 
           <div className={`text-sm mt-4 md:mt-0 ${
