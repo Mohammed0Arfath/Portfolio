@@ -159,7 +159,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               ? 'text-slate-200' 
               : 'text-slate-700'
           }`}>
-            3rd year Integrated M.Tech student at VIT Vellore, passionate about AI/ML and Software Engineering. 
+            Integrated M.Tech student at VIT Vellore, passionate about AI/ML and Software Engineering. 
             Aspiring to work at FAANG companies in AI, ML, or Computer Vision domains.
           </p>
 
