@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mohammed Arfath - AI/ML and Software Engineering student at VIT Vellore. Turning Ideas into AI-Powered Realities." />
+    <meta name="keywords" content="Mohammed Arfath, AI, Machine Learning, Computer Vision, Software Engineering, VIT Vellore, Portfolio" />
+    <meta name="author" content="Mohammed Arfath" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mohammed Arfath - AI Portfolio" />
+    <meta property="og:description" content="Passionate AI/ML and Software Engineering student at VIT Vellore, turning ideas into AI-powered realities." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mohammed Arfath - AI Portfolio" />
+    <meta name="twitter:description" content="Passionate AI/ML and Software Engineering student at VIT Vellore, turning ideas into AI-powered realities." />
+    
+    <title>Mohammed Arfath - AI Portfolio | Turning Ideas into AI-Powered Realities</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+      /* Critical CSS for faster loading */
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      
+      /* Loading spinner */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 3px solid #f3f4f6;
+        border-top: 3px solid #3b82f6;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 9999;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      
+      /* Hide loading spinner when app loads */
+      .app-loaded .loading-spinner {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-spinner"></div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Remove loading spinner when app loads -->
+    <script>
+      window.addEventListener('load', function() {
+        document.body.classList.add('app-loaded');
+      });
+    </script>
+  </body>
+</html>
