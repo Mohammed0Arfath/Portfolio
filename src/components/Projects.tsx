@@ -37,7 +37,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: MessageSquare,
       color: 'from-blue-500 to-cyan-500',
-      thumbnail: 'https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+      thumbnail: '/Sign Language.png',
       fallbackGradient: 'from-blue-600 to-cyan-600',
       metrics: ['94% Accuracy', '50 Sign Vocabulary', '20 FPS Processing']
     },
@@ -52,7 +52,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Users,
       color: 'from-green-500 to-teal-500',
-      thumbnail: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+      thumbnail: '/Crowd.png',
       fallbackGradient: 'from-green-600 to-teal-600',
       metrics: ['89% Accuracy', 'Real-time Analysis', 'Multi-demographic Support']
     },
@@ -67,7 +67,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Eye,
       color: 'from-orange-500 to-red-500',
-      thumbnail: 'https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+      thumbnail: '/FruitVison.png',
       fallbackGradient: 'from-orange-600 to-red-600',
       metrics: ['92% Accuracy', '10x Faster', 'Automated Quality Control']
     },
@@ -82,7 +82,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Camera,
       color: 'from-indigo-500 to-purple-500',
-      thumbnail: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+      thumbnail: '/Face Recognition.png',
       fallbackGradient: 'from-indigo-600 to-purple-600',
       metrics: ['96% Accuracy', 'Sub-second Processing', 'Lighting Robust']
     }
@@ -90,10 +90,12 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
 
   const handleImageError = (projectTitle: string) => {
     setImageErrors(prev => ({ ...prev, [projectTitle]: true }));
+    console.log(`Image failed to load for: ${projectTitle}`);
   };
 
   const handleImageLoad = (projectTitle: string) => {
     setImageErrors(prev => ({ ...prev, [projectTitle]: false }));
+    console.log(`Image loaded successfully for: ${projectTitle}`);
   };
 
   return (
