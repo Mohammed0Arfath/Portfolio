@@ -23,7 +23,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       featured: true,
       badge: 'Built with Bolt.new',
       color: 'from-purple-500 to-pink-500',
-      thumbnail: '/Memorify.jpeg',
+      thumbnail: '/Memorify_rs.png',
       fallbackGradient: 'from-purple-600 to-pink-600',
       metrics: ['95% User Satisfaction', 'Real-time Processing', 'PWA Support']
     },
