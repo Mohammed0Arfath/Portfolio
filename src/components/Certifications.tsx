@@ -180,7 +180,7 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                 <div className={`text-3xl font-bold ${
                   darkMode ? 'text-cyan-400' : 'text-cyan-600'
                 }`}>
-                  2024
+                  2025
                 </div>
                 <div className={`text-sm ${
                   darkMode ? 'text-slate-300' : 'text-slate-600'
