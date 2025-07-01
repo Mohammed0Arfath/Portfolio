@@ -20,7 +20,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       featured: true,
       badge: 'Built with Bolt.new',
       color: 'from-purple-500 to-pink-500',
-      thumbnail: 'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800',
+      thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop&auto=format',
       metrics: ['95% User Satisfaction', 'Real-time Processing', 'PWA Support']
     },
     {
@@ -34,7 +34,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: MessageSquare,
       color: 'from-blue-500 to-cyan-500',
-      thumbnail: 'https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=800',
+      thumbnail: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=400&fit=crop&auto=format',
       metrics: ['94% Accuracy', '50 Sign Vocabulary', '20 FPS Processing']
     },
     {
@@ -48,7 +48,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Users,
       color: 'from-green-500 to-teal-500',
-      thumbnail: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800',
+      thumbnail: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop&auto=format',
       metrics: ['89% Accuracy', 'Real-time Analysis', 'Multi-demographic Support']
     },
     {
@@ -62,7 +62,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Eye,
       color: 'from-orange-500 to-red-500',
-      thumbnail: 'https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=800',
+      thumbnail: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=400&fit=crop&auto=format',
       metrics: ['92% Accuracy', '10x Faster', 'Automated Quality Control']
     },
     {
@@ -76,7 +76,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Camera,
       color: 'from-indigo-500 to-purple-500',
-      thumbnail: 'https://images.pexels.com/photos/8566526/pexels-photo-8566526.jpeg?auto=compress&cs=tinysrgb&w=800',
+      thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop&auto=format',
       metrics: ['96% Accuracy', 'Sub-second Processing', 'Lighting Robust']
     }
   ];
@@ -115,12 +115,6 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                 }`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                {project.featured && (
-                  <div className="absolute -top-3 -right-3 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-bold rounded-full z-10">
-                    ⭐ Featured
-                  </div>
-                )}
-
                 {/* Project Thumbnail */}
                 <div className="relative h-48 overflow-hidden">
                   <img 
@@ -138,16 +132,23 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                     <project.icon className="w-6 h-6 text-white" />
                   </div>
 
-                  {/* Badge */}
-                  {project.badge && (
-                    <div className={`absolute top-4 right-4 px-3 py-1 text-xs font-medium rounded-full backdrop-blur-lg ${
-                      darkMode 
-                        ? 'bg-blue-500/20 text-blue-300 border border-blue-400/30' 
-                        : 'bg-blue-100/90 text-blue-700 border border-blue-200'
-                    }`}>
-                      {project.badge}
-                    </div>
-                  )}
+                  {/* Badges - Fixed positioning */}
+                  <div className="absolute top-4 right-4 flex flex-col gap-2">
+                    {project.featured && (
+                      <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-full shadow-lg">
+                        ⭐ Featured
+                      </div>
+                    )}
+                    {project.badge && (
+                      <div className={`px-3 py-1 text-xs font-medium rounded-full backdrop-blur-lg shadow-lg ${
+                        darkMode 
+                          ? 'bg-purple-500/20 text-purple-300 border border-purple-400/30' 
+                          : 'bg-purple-100/90 text-purple-700 border border-purple-200'
+                      }`}>
+                        {project.badge}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="p-8">
