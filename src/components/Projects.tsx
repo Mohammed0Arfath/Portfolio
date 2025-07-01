@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ExternalLink, Github, Sparkles, Eye, Users, Cpu, Camera, MessageSquare, Play, FileText } from 'lucide-react';
 
 interface ProjectsProps {
@@ -6,6 +6,8 @@ interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
   const projects = [
     {
       title: 'Memorify App',
@@ -21,6 +23,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       badge: 'Built with Bolt.new',
       color: 'from-purple-500 to-pink-500',
       thumbnail: '/Memorify.jpeg',
+      fallbackGradient: 'from-purple-600 to-pink-600',
       metrics: ['95% User Satisfaction', 'Real-time Processing', 'PWA Support']
     },
     {
@@ -34,7 +37,8 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: MessageSquare,
       color: 'from-blue-500 to-cyan-500',
-      thumbnail: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=400&fit=crop&auto=format',
+      thumbnail: 'https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+      fallbackGradient: 'from-blue-600 to-cyan-600',
       metrics: ['94% Accuracy', '50 Sign Vocabulary', '20 FPS Processing']
     },
     {
@@ -48,7 +52,8 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Users,
       color: 'from-green-500 to-teal-500',
-      thumbnail: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop&auto=format',
+      thumbnail: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+      fallbackGradient: 'from-green-600 to-teal-600',
       metrics: ['89% Accuracy', 'Real-time Analysis', 'Multi-demographic Support']
     },
     {
@@ -62,7 +67,8 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Eye,
       color: 'from-orange-500 to-red-500',
-      thumbnail: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=400&fit=crop&auto=format',
+      thumbnail: 'https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+      fallbackGradient: 'from-orange-600 to-red-600',
       metrics: ['92% Accuracy', '10x Faster', 'Automated Quality Control']
     },
     {
@@ -76,10 +82,19 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       githubUrl: 'https://github.com/Mohammed0Arfath',
       icon: Camera,
       color: 'from-indigo-500 to-purple-500',
-      thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop&auto=format',
+      thumbnail: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+      fallbackGradient: 'from-indigo-600 to-purple-600',
       metrics: ['96% Accuracy', 'Sub-second Processing', 'Lighting Robust']
     }
   ];
+
+  const handleImageError = (projectTitle: string) => {
+    setImageErrors(prev => ({ ...prev, [projectTitle]: true }));
+  };
+
+  const handleImageLoad = (projectTitle: string) => {
+    setImageErrors(prev => ({ ...prev, [projectTitle]: false }));
+  };
 
   return (
     <section id="projects" className={`py-20 ${
@@ -117,22 +132,36 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
               >
                 {/* Project Thumbnail */}
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={project.thumbnail} 
-                    alt={`${project.title} - ${project.subtitle}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                  />
+                  {!imageErrors[project.title] ? (
+                    <img 
+                      src={project.thumbnail} 
+                      alt={`${project.title} - ${project.subtitle}`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                      onError={() => handleImageError(project.title)}
+                      onLoad={() => handleImageLoad(project.title)}
+                    />
+                  ) : (
+                    // Fallback gradient background with project icon
+                    <div className={`w-full h-full bg-gradient-to-br ${project.fallbackGradient} flex items-center justify-center`}>
+                      <div className="text-center">
+                        <project.icon className="w-16 h-16 text-white/80 mx-auto mb-2" />
+                        <div className="text-white/90 font-semibold text-lg">{project.title}</div>
+                        <div className="text-white/70 text-sm">{project.subtitle}</div>
+                      </div>
+                    </div>
+                  )}
+                  
                   <div className={`absolute inset-0 bg-gradient-to-t ${
                     darkMode ? 'from-slate-900/80 to-transparent' : 'from-white/80 to-transparent'
                   }`}></div>
                   
                   {/* Project Icon */}
-                  <div className={`absolute top-4 left-4 p-3 rounded-xl bg-gradient-to-r ${project.color} shadow-lg`}>
+                  <div className={`absolute top-4 left-4 p-3 rounded-xl bg-gradient-to-r ${project.color} shadow-lg backdrop-blur-lg`}>
                     <project.icon className="w-6 h-6 text-white" />
                   </div>
 
-                  {/* Badges - Fixed positioning */}
+                  {/* Badges */}
                   <div className="absolute top-4 right-4 flex flex-col gap-2">
                     {project.featured && (
                       <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-full shadow-lg backdrop-blur-lg">
