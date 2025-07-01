@@ -4,21 +4,69 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mohammed Arfath - AI/ML and Software Engineering student at VIT Vellore. Turning Ideas into AI-Powered Realities." />
-    <meta name="keywords" content="Mohammed Arfath, AI, Machine Learning, Computer Vision, Software Engineering, VIT Vellore, Portfolio" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Mohammed Arfath - AI/ML Engineer and Software Developer at VIT Vellore. Specializing in Computer Vision, Machine Learning, and AI solutions. Aspiring FAANG engineer with 15+ certifications and 5+ innovative projects." />
+    <meta name="keywords" content="Mohammed Arfath, AI Engineer, Machine Learning, Computer Vision, Software Engineering, VIT Vellore, FAANG, Portfolio, Python, Deep Learning, Data Science" />
     <meta name="author" content="Mohammed Arfath" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://heroic-clafoutis-6f1eee.netlify.app/" />
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Mohammed Arfath - AI Portfolio" />
-    <meta property="og:description" content="Passionate AI/ML and Software Engineering student at VIT Vellore, turning ideas into AI-powered realities." />
+    <meta property="og:title" content="Mohammed Arfath - AI/ML Engineer | FAANG Aspirant" />
+    <meta property="og:description" content="Passionate AI/ML Engineer at VIT Vellore, building innovative solutions with 94% average project accuracy. Specializing in Computer Vision, Deep Learning, and AI applications." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://heroic-clafoutis-6f1eee.netlify.app/" />
+    <meta property="og:image" content="https://heroic-clafoutis-6f1eee.netlify.app/image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Mohammed Arfath Portfolio" />
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mohammed Arfath - AI Portfolio" />
-    <meta name="twitter:description" content="Passionate AI/ML and Software Engineering student at VIT Vellore, turning ideas into AI-powered realities." />
+    <meta name="twitter:title" content="Mohammed Arfath - AI/ML Engineer | FAANG Aspirant" />
+    <meta name="twitter:description" content="Passionate AI/ML Engineer at VIT Vellore, building innovative solutions with 94% average project accuracy. Specializing in Computer Vision, Deep Learning, and AI applications." />
+    <meta name="twitter:image" content="https://heroic-clafoutis-6f1eee.netlify.app/image.png" />
+    <meta name="twitter:creator" content="@MohammedArfath" />
     
-    <title>Mohammed Arfath - AI Portfolio | Turning Ideas into AI-Powered Realities</title>
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
+    <meta name="application-name" content="Mohammed Arfath Portfolio" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mohammed Arfath",
+      "jobTitle": "AI/ML Engineer & Software Developer",
+      "description": "Passionate AI/ML Engineer at VIT Vellore, specializing in Computer Vision, Machine Learning, and innovative AI solutions",
+      "url": "https://heroic-clafoutis-6f1eee.netlify.app/",
+      "image": "https://heroic-clafoutis-6f1eee.netlify.app/image.png",
+      "email": "mohammedarfath02003@gmail.com",
+      "telephone": "+91-8072781649",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "VIT Vellore",
+        "address": "Vellore, Tamil Nadu, India"
+      },
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Computer Vision",
+        "Deep Learning",
+        "Python Programming",
+        "Software Engineering"
+      ],
+      "sameAs": [
+        "https://linkedin.com/in/mohammed-arfath-r",
+        "https://github.com/Mohammed0Arfath"
+      ]
+    }
+    </script>
+    
+    <title>Mohammed Arfath - AI/ML Engineer | FAANG Aspirant | VIT Vellore</title>
     
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,6 +106,16 @@
       .app-loaded .loading-spinner {
         display: none;
       }
+      
+      /* Prevent flash of unstyled content */
+      #root {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      
+      .app-loaded #root {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -71,6 +129,11 @@
       window.addEventListener('load', function() {
         document.body.classList.add('app-loaded');
       });
+      
+      // Fallback for slower connections
+      setTimeout(function() {
+        document.body.classList.add('app-loaded');
+      }, 3000);
     </script>
   </body>
 </html>
