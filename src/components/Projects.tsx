@@ -30,7 +30,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     {
       title: 'Crowd Demographics Analysis',
       description: 'Public safety insights through age and gender analysis of crowd demographics using deep learning.',
-      technologies: ['UTKFace Dataset', 'MLP', 'Python', 'Computer Vision'],
+      technologies: ['UTKFace Dataset', 'MLP', 'Python', 'Computer Vision', 'Vision Transformers'],
       link: '#',
       github: 'https://github.com/Mohammed0Arfath',
       icon: Users,
@@ -48,7 +48,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     {
       title: 'Real-time Facial Recognition',
       description: 'High-performance facial recognition system with advanced thresholding and voting prediction algorithms.',
-      technologies: ['OpenCV', 'Python', 'Computer Vision', 'Real-time Processing'],
+      technologies: ['OpenCV', 'Python', 'Computer Vision', 'Real-time Processing', 'YuNet Face Detection'],
       link: '#',
       github: 'https://github.com/Mohammed0Arfath',
       icon: Camera,
