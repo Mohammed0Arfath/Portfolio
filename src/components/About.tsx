@@ -98,7 +98,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                 </div>
 
                 <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-                  Currently in 3rd year, focusing on advanced AI/ML coursework and research projects
+                  Currently in 4th year, focusing on advanced AI/ML coursework and research projects
                 </div>
               </div>
             </div>
@@ -261,7 +261,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                 <div className={`text-3xl font-bold ${
                   darkMode ? 'text-cyan-400' : 'text-cyan-600'
                 }`}>
-                  3rd
+                  4th
                 </div>
                 <div className={`text-sm ${
                   darkMode ? 'text-slate-300' : 'text-slate-600'
