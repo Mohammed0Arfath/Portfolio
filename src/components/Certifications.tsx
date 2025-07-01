@@ -12,11 +12,11 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
       logo: '🎓',
       color: 'from-blue-500 to-indigo-600',
       certifications: [
-        { name: 'Deep Learning', verified: true, year: '2024' },
-        { name: 'Computer Vision', verified: true, year: '2024' },
-        { name: 'Generative AI', verified: true, year: '2024' },
-        { name: 'Agile Scrum', verified: true, year: '2024' },
-        { name: 'Soft Skills', verified: true, year: '2024' }
+        { name: 'Deep Learning', verified: true, year: '2025' },
+        { name: 'Computer Vision', verified: true, year: '2025' },
+        { name: 'Generative AI', verified: true, year: '2025' },
+        { name: 'Agile Scrum', verified: true, year: '2025' },
+        { name: 'Soft Skills', verified: true, year: '2025 }
       ],
       totalCerts: 5,
       credentialUrl: '#'
@@ -26,7 +26,7 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
       logo: '☁️',
       color: 'from-orange-500 to-red-500',
       certifications: [
-        { name: 'Introduction to Generative AI', verified: true, year: '2024' }
+        { name: 'Introduction to Generative AI', verified: true, year: '2025' }
       ],
       totalCerts: 1,
       credentialUrl: '#'
@@ -36,9 +36,9 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
       logo: '🚀',
       color: 'from-green-500 to-teal-500',
       certifications: [
-        { name: 'Gemini Apps with Streamlit', verified: true, year: '2024' },
-        { name: 'Vertex AI Fundamentals', verified: true, year: '2024' },
-        { name: 'Cloud ML Skill Badges', verified: true, year: '2024' }
+        { name: 'Gemini Apps with Streamlit', verified: true, year: '2025' },
+        { name: 'Vertex AI Fundamentals', verified: true, year: '2025' },
+        { name: 'Cloud ML Skill Badges', verified: true, year: '2025' }
       ],
       totalCerts: 3,
       credentialUrl: '#'
@@ -48,9 +48,9 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
       logo: '📊',
       color: 'from-cyan-500 to-blue-500',
       certifications: [
-        { name: 'Python Programming', verified: true, year: '2024' },
+        { name: 'Python Programming', verified: true, year: '2023' },
         { name: 'Intro to Machine Learning', verified: true, year: '2024' },
-        { name: 'Intermediate Machine Learning', verified: true, year: '2024' }
+        { name: 'Intermediate Machine Learning', verified: true, year: '2025' }
       ],
       totalCerts: 3,
       credentialUrl: '#'
@@ -60,8 +60,8 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
       logo: '💼',
       color: 'from-purple-500 to-pink-500',
       certifications: [
-        { name: 'Deloitte Data Analytics Virtual Experience', verified: true, year: '2024' },
-        { name: 'Solutions Architecture Virtual Experience', verified: true, year: '2024' }
+        { name: 'Deloitte Data Analytics Virtual Experience', verified: true, year: '2025' },
+        { name: 'Solutions Architecture Virtual Experience', verified: true, year: '2025' }
       ],
       totalCerts: 2,
       credentialUrl: '#'
@@ -300,7 +300,7 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                 <div className={`text-4xl font-bold mb-2 ${
                   darkMode ? 'text-cyan-400' : 'text-cyan-600'
                 }`}>
-                  2024
+                  2025
                 </div>
                 <div className={`text-sm font-medium ${
                   darkMode ? 'text-slate-300' : 'text-slate-600'
