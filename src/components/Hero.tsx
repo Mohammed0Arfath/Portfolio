@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { ArrowRight, Download, ExternalLink } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 
@@ -7,23 +7,69 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ darkMode }) => {
+  const [splineError, setSplineError] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
   useEffect(() => {
-    // Load Unicorn Studio script for mobile
-    if (window.innerWidth < 1024) {
+    // Check screen size and WebGL support
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    // Check WebGL support
+    const checkWebGLSupport = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) {
+          setSplineError(true);
+          console.warn('WebGL not supported, falling back to CSS animations');
+        }
+      } catch (e) {
+        setSplineError(true);
+        console.warn('WebGL check failed, falling back to CSS animations');
+      }
+    };
+
+    checkScreenSize();
+    checkWebGLSupport();
+    
+    window.addEventListener('resize', checkScreenSize);
+    
+    // Load Unicorn Studio script for mobile only if no WebGL issues
+    if (window.innerWidth < 1024 && !splineError) {
       if (!window.UnicornStudio) {
         window.UnicornStudio = { isInitialized: false };
         const script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.26/dist/unicornStudio.umd.js';
         script.onload = function() {
           if (!window.UnicornStudio.isInitialized) {
-            window.UnicornStudio.init();
-            window.UnicornStudio.isInitialized = true;
+            try {
+              window.UnicornStudio.init();
+              window.UnicornStudio.isInitialized = true;
+            } catch (error) {
+              console.warn('Unicorn Studio initialization failed:', error);
+              setSplineError(true);
+            }
           }
+        };
+        script.onerror = function() {
+          console.warn('Failed to load Unicorn Studio, using fallback');
+          setSplineError(true);
         };
         (document.head || document.body).appendChild(script);
       }
     }
-  }, []);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, [splineError]);
+
+  const handleSplineError = () => {
+    console.warn('Spline failed to load, using fallback background');
+    setSplineError(true);
+  };
 
   return (
     <section className={`min-h-screen flex items-center justify-center relative overflow-hidden ${
@@ -31,59 +77,66 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         ? 'bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900' 
         : 'bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100'
     }`}>
-      {/* Desktop Spline 3D Background */}
-      <div className="hidden lg:block absolute inset-0 w-full h-full">
-        <Suspense fallback={
-          <div className={`w-full h-full flex items-center justify-center ${
-            darkMode ? 'bg-slate-900' : 'bg-slate-50'
-          }`}>
-            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
-          </div>
-        }>
-          <Spline
-            scene="https://prod.spline.design/UWb6mOJHCPe6V4s6/scene.splinecode"
+      {/* Desktop Spline 3D Background - Only load if no errors and large screen */}
+      {isLargeScreen && !splineError && (
+        <div className="absolute inset-0 w-full h-full">
+          <Suspense fallback={
+            <div className={`w-full h-full flex items-center justify-center ${
+              darkMode ? 'bg-slate-900' : 'bg-slate-50'
+            }`}>
+              <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+            </div>
+          }>
+            <Spline
+              scene="https://prod.spline.design/UWb6mOJHCPe6V4s6/scene.splinecode"
+              onError={handleSplineError}
+              style={{
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 1
+              }}
+            />
+          </Suspense>
+        </div>
+      )}
+
+      {/* Mobile Unicorn Studio 3D Background - Only if no errors and small screen */}
+      {!isLargeScreen && !splineError && (
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+          <div 
+            data-us-project="KhmBWfY8ZjI5b59tOmWu" 
+            className="w-full h-full"
             style={{
               width: '100%',
               height: '100%',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: 1
+              minHeight: '100vh',
+              minHeight: '100dvh'
             }}
           />
-        </Suspense>
-      </div>
+        </div>
+      )}
 
-      {/* Mobile Unicorn Studio 3D Background */}
-      <div className="lg:hidden absolute inset-0 w-full h-full flex items-center justify-center">
-        <div 
-          data-us-project="KhmBWfY8ZjI5b59tOmWu" 
-          className="w-full h-full"
-          style={{
-            width: '100%',
-            height: '100%',
-            minHeight: '100vh',
-            minHeight: '100dvh'
-          }}
-        />
-      </div>
-
-      {/* Fallback Background for Mobile (in case Unicorn Studio doesn't load) */}
-      <div className="lg:hidden absolute inset-0 overflow-hidden" style={{ zIndex: -1 }}>
+      {/* Enhanced Fallback Background - Always present, visible when 3D fails */}
+      <div className={`absolute inset-0 overflow-hidden ${splineError ? 'z-10' : 'z-0'}`}>
         {/* Animated gradient orbs */}
         <div className={`absolute -top-40 -left-40 w-80 h-80 rounded-full opacity-30 animate-pulse ${
           darkMode ? 'bg-gradient-to-r from-blue-600 to-cyan-500' : 'bg-gradient-to-r from-blue-400 to-cyan-400'
-        }`}></div>
-        <div className={`absolute -bottom-40 -right-40 w-96 h-96 rounded-full opacity-20 animate-pulse delay-1000 ${
+        }`} style={{ animationDuration: '4s' }}></div>
+        
+        <div className={`absolute -bottom-40 -right-40 w-96 h-96 rounded-full opacity-20 animate-pulse ${
           darkMode ? 'bg-gradient-to-r from-purple-600 to-pink-500' : 'bg-gradient-to-r from-purple-400 to-pink-400'
-        }`}></div>
-        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full opacity-25 animate-pulse delay-500 ${
+        }`} style={{ animationDelay: '1s', animationDuration: '6s' }}></div>
+        
+        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full opacity-25 animate-pulse ${
           darkMode ? 'bg-gradient-to-r from-indigo-600 to-blue-500' : 'bg-gradient-to-r from-indigo-400 to-blue-400'
-        }`}></div>
+        }`} style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
         
         {/* Floating particles */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(15)].map((_, i) => (
             <div
               key={i}
               className={`absolute w-2 h-2 rounded-full opacity-40 animate-pulse ${
@@ -110,17 +163,27 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             <rect width="100" height="100" fill="url(#grid)" />
           </svg>
         </div>
+
+        {/* Moving gradient overlay */}
+        <div className={`absolute inset-0 opacity-20 ${
+          darkMode 
+            ? 'bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-cyan-600/30' 
+            : 'bg-gradient-to-r from-blue-400/30 via-purple-400/30 to-cyan-400/30'
+        }`} style={{
+          backgroundSize: '200% 200%',
+          animation: 'gradientMove 8s ease infinite'
+        }}></div>
       </div>
 
       {/* Overlay for text readability */}
-      <div className={`absolute inset-0 z-10 ${
+      <div className={`absolute inset-0 z-20 ${
         darkMode 
           ? 'bg-slate-900/40' 
           : 'bg-white/60'
       }`}></div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 py-20 relative z-20">
+      <div className="container mx-auto px-4 py-20 relative z-30">
         <div className="max-w-4xl mx-auto text-center">
           {/* Status Badge */}
           <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-8 backdrop-blur-lg border ${
@@ -135,8 +198,8 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           {/* Main Heading */}
           <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight ${
             darkMode 
-              ? 'text-white' 
-              : 'text-slate-900'
+              ? 'text-white drop-shadow-lg' 
+              : 'text-slate-900 drop-shadow-md'
           }`}>
             Mohammed{' '}
             <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
@@ -147,8 +210,8 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           {/* Subtitle */}
           <p className={`text-lg sm:text-xl md:text-2xl mb-4 font-semibold ${
             darkMode 
-              ? 'text-slate-100' 
-              : 'text-slate-800'
+              ? 'text-slate-100 drop-shadow-md' 
+              : 'text-slate-800 drop-shadow-sm'
           }`}>
             Turning Ideas into AI-Powered Realities
           </p>
@@ -156,7 +219,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           {/* Description */}
           <p className={`text-base sm:text-lg mb-8 max-w-2xl mx-auto font-medium ${
             darkMode 
-              ? 'text-slate-200' 
+              ? 'text-slate-200 drop-shadow-sm' 
               : 'text-slate-700'
           }`}>
             Integrated M.Tech student at VIT Vellore, passionate about AI/ML and Software Engineering. 
