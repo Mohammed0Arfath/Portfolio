@@ -7,6 +7,7 @@ interface ProjectsProps {
 
 const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [imageLoaded, setImageLoaded] = useState<Record<string, boolean>>({});
 
   const projects = [
     {
@@ -89,13 +90,15 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
   ];
 
   const handleImageError = (projectTitle: string) => {
+    console.log(`❌ Image failed to load for: ${projectTitle}`);
     setImageErrors(prev => ({ ...prev, [projectTitle]: true }));
-    console.log(`Image failed to load for: ${projectTitle}`);
+    setImageLoaded(prev => ({ ...prev, [projectTitle]: false }));
   };
 
   const handleImageLoad = (projectTitle: string) => {
+    console.log(`✅ Image loaded successfully for: ${projectTitle}`);
     setImageErrors(prev => ({ ...prev, [projectTitle]: false }));
-    console.log(`Image loaded successfully for: ${projectTitle}`);
+    setImageLoaded(prev => ({ ...prev, [projectTitle]: true }));
   };
 
   return (
@@ -133,18 +136,35 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 {/* Project Thumbnail */}
-                <div className="relative h-48 overflow-hidden">
-                  {!imageErrors[project.title] ? (
+                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800">
+                  {/* Loading State */}
+                  {!imageLoaded[project.title] && !imageErrors[project.title] && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                    </div>
+                  )}
+
+                  {/* Image */}
+                  {!imageErrors[project.title] && (
                     <img 
                       src={project.thumbnail} 
                       alt={`${project.title} - ${project.subtitle}`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
+                        imageLoaded[project.title] ? 'opacity-100' : 'opacity-0'
+                      }`}
                       loading="lazy"
                       onError={() => handleImageError(project.title)}
                       onLoad={() => handleImageLoad(project.title)}
+                      style={{
+                        aspectRatio: '2/1',
+                        objectFit: 'cover',
+                        objectPosition: 'center'
+                      }}
                     />
-                  ) : (
-                    // Fallback gradient background with project icon
+                  )}
+
+                  {/* Fallback gradient background with project icon */}
+                  {imageErrors[project.title] && (
                     <div className={`w-full h-full bg-gradient-to-br ${project.fallbackGradient} flex items-center justify-center`}>
                       <div className="text-center">
                         <project.icon className="w-16 h-16 text-white/80 mx-auto mb-2" />
@@ -154,6 +174,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                     </div>
                   )}
                   
+                  {/* Gradient Overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-t ${
                     darkMode ? 'from-slate-900/80 to-transparent' : 'from-white/80 to-transparent'
                   }`}></div>
