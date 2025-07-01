@@ -20,7 +20,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       featured: true,
       badge: 'Built with Bolt.new',
       color: 'from-purple-500 to-pink-500',
-      thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop&auto=format',
+      thumbnail: '/Memorify.jpeg',
       metrics: ['95% User Satisfaction', 'Real-time Processing', 'PWA Support']
     },
     {
@@ -119,7 +119,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={project.thumbnail} 
-                    alt={project.title}
+                    alt={`${project.title} - ${project.subtitle}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />
@@ -135,7 +135,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                   {/* Badges - Fixed positioning */}
                   <div className="absolute top-4 right-4 flex flex-col gap-2">
                     {project.featured && (
-                      <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-full shadow-lg">
+                      <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-full shadow-lg backdrop-blur-lg">
                         ⭐ Featured
                       </div>
                     )}
