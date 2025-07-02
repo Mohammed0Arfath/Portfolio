@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Code2, Coffee, Linkedin, Github, Mail, ArrowUp, Zap } from 'lucide-react';
+import { Heart, Code2, Coffee, Linkedin, Github, Mail, ArrowUp } from 'lucide-react';
 
 interface FooterProps {
   darkMode: boolean;
@@ -149,32 +149,15 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
             darkMode ? 'border-slate-800' : 'border-slate-200'
           }`}>
             <div className="flex flex-col md:flex-row items-center justify-between">
-              {/* Copyright with Bolt.new tag */}
-              <div className={`flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 text-sm mb-4 md:mb-0 ${
+              {/* Copyright */}
+              <div className={`flex items-center space-x-2 text-sm mb-4 md:mb-0 ${
                 darkMode ? 'text-slate-400' : 'text-slate-600'
               }`}>
-                <div className="flex items-center space-x-2">
-                  <span>© 2025 Mohammed Arfath – Built with</span>
-                  <Code2 className="w-4 h-4 text-blue-500" />
-                  <span>&</span>
-                  <Coffee className="w-4 h-4 text-amber-500" />
-                  <span>using React & Tailwind CSS</span>
-                </div>
-                
-                {/* Bolt.new Badge */}
-                <a
-                  href="https://bolt.new"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-105 ${
-                    darkMode 
-                      ? 'bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-purple-300 border border-purple-500/30 hover:bg-gradient-to-r hover:from-purple-600/30 hover:to-blue-600/30' 
-                      : 'bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 border border-purple-200 hover:bg-gradient-to-r hover:from-purple-200 hover:to-blue-200'
-                  }`}
-                >
-                  <Zap className="w-3 h-3" />
-                  <span>Built with Bolt.new</span>
-                </a>
+                <span>© 2025 Mohammed Arfath – Built with</span>
+                <Code2 className="w-4 h-4 text-blue-500" />
+                <span>&</span>
+                <Coffee className="w-4 h-4 text-amber-500" />
+                <span>using React & Tailwind CSS</span>
               </div>
 
               {/* Back to Top */}
