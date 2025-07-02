@@ -19,17 +19,18 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
         { name: 'Soft Skills', verified: true, year: '2025' }
       ],
       totalCerts: 5,
-      credentialUrl: '#'
+      credentialUrl: 'https://docs.google.com/spreadsheets/d/1fB75TJxYv2bVEQFSw0sKOAO7sGiz2B-8/edit?usp=sharing&ouid=116614540360172099735&rtpof=true&sd=true'
     },
     {
       provider: 'AWS Educate',
       logo: '☁️',
       color: 'from-orange-500 to-red-500',
       certifications: [
-        { name: 'Introduction to Generative AI', verified: true, year: '2025' }
+        { name: 'Introduction to Generative AI', verified: true, year: '2025' },
+        { name: 'AWS Cloud Practitioner Essentials', verified: true, year: '2025' }
       ],
-      totalCerts: 1,
-      credentialUrl: '#'
+      totalCerts: 2,
+      credentialUrl: 'https://docs.google.com/spreadsheets/d/187Ianzh3dJC35Fa5oHBIQose8XL05PGk/edit?usp=sharing&ouid=116614540360172099735&rtpof=true&sd=true'
     },
     {
       provider: 'Google Cloud',
@@ -41,7 +42,7 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
         { name: 'Cloud ML Skill Badges', verified: true, year: '2025' }
       ],
       totalCerts: 3,
-      credentialUrl: '#'
+      credentialUrl: 'https://docs.google.com/spreadsheets/d/17IglKGat3vtJ4hBubkXgBrh7jNoYzU-E6xhNdhSgIaM/edit?usp=sharing'
     },
     {
       provider: 'Kaggle',
@@ -53,7 +54,7 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
         { name: 'Intermediate Machine Learning', verified: true, year: '2025' }
       ],
       totalCerts: 3,
-      credentialUrl: '#'
+      credentialUrl: 'https://docs.google.com/spreadsheets/d/1PCSOTQeDFoI3aM0njABFiZUK5EnLAQoN6OLnkAqVBnc/edit?usp=sharing'
     },
     {
       provider: 'Forage',
@@ -64,13 +65,13 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
         { name: 'Solutions Architecture Virtual Experience', verified: true, year: '2025' }
       ],
       totalCerts: 2,
-      credentialUrl: '#'
+      credentialUrl: 'https://docs.google.com/spreadsheets/d/1FHYzVyJXo-JM1pFeb1jx3x3v6qlBCAO5OzRyBaTHygs/edit?usp=sharing'
     }
   ];
 
   const skillAreas = [
     { area: 'AI & Machine Learning', count: 8, icon: '🤖' },
-    { area: 'Cloud Computing', count: 4, icon: '☁️' },
+    { area: 'Cloud Computing', count: 5, icon: '☁️' },
     { area: 'Data Science', count: 5, icon: '📊' },
     { area: 'Professional Skills', count: 3, icon: '💼' }
   ];
@@ -131,6 +132,8 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                   
                   <a
                     href={provider.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`p-2 rounded-lg transition-colors ${
                       darkMode 
                         ? 'hover:bg-slate-600 text-slate-400 hover:text-white' 
@@ -246,7 +249,7 @@ const Certifications: React.FC<CertificationsProps> = ({ darkMode }) => {
                 <div className={`text-4xl font-bold mb-2 ${
                   darkMode ? 'text-blue-400' : 'text-blue-600'
                 }`}>
-                  15+
+                  16+
                 </div>
                 <div className={`text-sm font-medium ${
                   darkMode ? 'text-slate-300' : 'text-slate-600'
