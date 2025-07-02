@@ -19,6 +19,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       technologies: ['Together.ai', 'ElevenLabs', 'Supabase', 'PWA', 'React', 'TypeScript'],
       liveUrl: 'https://superlative-treacle-ce6a5f.netlify.app/',
       githubUrl: 'https://github.com/Mohammed0Arfath/Memorify-App',
+      docsUrl: 'https://drive.google.com/file/d/1xn0_ahtkpnWDc17zI-t__jneOCEhtQqI/view?usp=sharing',
       icon: Sparkles,
       featured: true,
       badge: 'Built with Bolt.new',
@@ -36,6 +37,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       technologies: ['OpenCV', 'CNN', 'Gemini API', 'Python', 'Computer Vision'],
       liveUrl: '#',
       githubUrl: 'https://github.com/Mohammed0Arfath',
+      docsUrl: 'https://drive.google.com/file/d/1kZL5qtAMu8zNBPN7g6OCOMTXEbmbrDor/view?usp=sharing',
       icon: MessageSquare,
       color: 'from-blue-500 to-cyan-500',
       thumbnail: '/Sign Language.png',
@@ -51,6 +53,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       technologies: ['UTKFace Dataset', 'Vision Transformers', 'Python', 'Computer Vision', 'Deep Learning'],
       liveUrl: '#',
       githubUrl: 'https://github.com/Mohammed0Arfath',
+      docsUrl: 'https://drive.google.com/file/d/1konMNtpN6-lG8YbTaNjmsO34Ta4LqHY1/view?usp=sharing',
       icon: Users,
       color: 'from-green-500 to-teal-500',
       thumbnail: '/Crowd.png',
@@ -66,6 +69,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       technologies: ['EfficientNet', 'LBP', 'GLCM', 'Machine Learning', 'Image Processing'],
       liveUrl: '#',
       githubUrl: 'https://github.com/Mohammed0Arfath',
+      docsUrl: 'https://drive.google.com/file/d/1DvsfsQ2OnpL5P7094SfVYwjaMrKVFdrK/view?usp=sharing',
       icon: Eye,
       color: 'from-orange-500 to-red-500',
       thumbnail: '/FruitVison.png',
@@ -81,6 +85,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       technologies: ['OpenCV', 'YuNet Face Detection', 'Python', 'Computer Vision', 'Real-time Processing'],
       liveUrl: '#',
       githubUrl: 'https://github.com/Mohammed0Arfath',
+      docsUrl: 'https://drive.google.com/file/d/1x4QtproMytVBejcZy08rsektDisGqfpq/view?usp=sharing',
       icon: Camera,
       color: 'from-indigo-500 to-purple-500',
       thumbnail: '/Face Recognition.png',
@@ -136,55 +141,56 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 {/* Project Thumbnail Container */}
-                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800">
-                  {/* Loading State */}
-                  {!imageLoaded[project.title] && !imageErrors[project.title] && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                <div className="relative h-48 overflow-hidden">
+                  {/* Always show fallback gradient background */}
+                  <div className={`absolute inset-0 w-full h-full bg-gradient-to-br ${project.fallbackGradient} flex items-center justify-center`}>
+                    <div className="text-center">
+                      <project.icon className="w-16 h-16 text-white/80 mx-auto mb-2" />
+                      <div className="text-white/90 font-semibold text-lg">{project.title}</div>
+                      <div className="text-white/70 text-sm">{project.subtitle}</div>
                     </div>
-                  )}
+                  </div>
 
-                  {/* Actual Image */}
+                  {/* Try to load actual image on top */}
                   {!imageErrors[project.title] && (
-                    <img 
-                      src={project.thumbnail} 
-                      alt={`${project.title} - ${project.subtitle}`}
-                      className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
-                        imageLoaded[project.title] ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      loading="lazy"
-                      onError={() => handleImageError(project.title)}
-                      onLoad={() => handleImageLoad(project.title)}
-                      style={{
-                        minHeight: '192px', // Ensure consistent height
-                        maxHeight: '192px'
-                      }}
-                    />
-                  )}
+                    <>
+                      {/* Loading State */}
+                      {!imageLoaded[project.title] && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-slate-200 dark:bg-slate-700 z-10">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                        </div>
+                      )}
 
-                  {/* Fallback Gradient Background with Icon */}
-                  {imageErrors[project.title] && (
-                    <div className={`w-full h-full bg-gradient-to-br ${project.fallbackGradient} flex items-center justify-center`}>
-                      <div className="text-center">
-                        <project.icon className="w-16 h-16 text-white/80 mx-auto mb-2" />
-                        <div className="text-white/90 font-semibold text-lg">{project.title}</div>
-                        <div className="text-white/70 text-sm">{project.subtitle}</div>
-                      </div>
-                    </div>
+                      {/* Actual Image */}
+                      <img 
+                        src={project.thumbnail} 
+                        alt={`${project.title} - ${project.subtitle}`}
+                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110 z-20 ${
+                          imageLoaded[project.title] ? 'opacity-100' : 'opacity-0'
+                        }`}
+                        loading="lazy"
+                        onError={() => handleImageError(project.title)}
+                        onLoad={() => handleImageLoad(project.title)}
+                        style={{
+                          minHeight: '192px',
+                          maxHeight: '192px'
+                        }}
+                      />
+                    </>
                   )}
                   
-                  {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-t ${
+                  {/* Gradient Overlay for text readability */}
+                  <div className={`absolute inset-0 bg-gradient-to-t z-30 ${
                     darkMode ? 'from-slate-900/80 to-transparent' : 'from-white/80 to-transparent'
                   }`}></div>
                   
                   {/* Project Icon */}
-                  <div className={`absolute top-4 left-4 p-3 rounded-xl bg-gradient-to-r ${project.color} shadow-lg backdrop-blur-lg`}>
+                  <div className={`absolute top-4 left-4 p-3 rounded-xl bg-gradient-to-r ${project.color} shadow-lg backdrop-blur-lg z-40`}>
                     <project.icon className="w-6 h-6 text-white" />
                   </div>
 
                   {/* Badges */}
-                  <div className="absolute top-4 right-4 flex flex-col gap-2">
+                  <div className="absolute top-4 right-4 flex flex-col gap-2 z-40">
                     {project.featured && (
                       <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-full shadow-lg backdrop-blur-lg">
                         ⭐ Featured
@@ -337,7 +343,10 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                       <Github className="w-4 h-4 mr-2" />
                       View Code
                     </a>
-                    <button
+                    <a
+                      href={project.docsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`flex items-center px-4 py-2 font-semibold rounded-lg border-2 transition-all duration-300 text-sm hover:scale-105 ${
                         darkMode 
                           ? 'border-purple-600 text-purple-300 hover:bg-purple-900/20 hover:border-purple-500' 
@@ -345,8 +354,8 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                       }`}
                     >
                       <FileText className="w-4 h-4 mr-2" />
-                      Case Study
-                    </button>
+                      Docs
+                    </a>
                   </div>
                 </div>
               </div>
