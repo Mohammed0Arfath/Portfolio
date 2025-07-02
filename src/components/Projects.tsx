@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Sparkles, Eye, Users, Cpu, Camera, MessageSquare, Play, FileText, Award, Zap, Target } from 'lucide-react';
+import { ExternalLink, Github, Sparkles, Eye, Users, Cpu, Camera, MessageSquare, Play, FileText } from 'lucide-react';
 
 interface ProjectsProps {
   darkMode: boolean;
@@ -13,10 +13,10 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     {
       title: 'Memorify App',
       subtitle: 'Agentic AI Diary with Emotional Intelligence',
-      problem: 'Traditional journaling lacks emotional insights and personalized feedback, making it difficult for users to track mental health patterns and receive meaningful guidance.',
-      solution: 'Built an AI-powered diary app with voice recording, sentiment analysis, and personalized AI companion using Together.ai for LLM processing, ElevenLabs for voice synthesis, and Supabase for real-time data management.',
-      impact: 'Achieved 95% user satisfaction with PWA offline support, real-time emotion tracking, and personalized AI responses that help users understand their emotional patterns.',
-      technologies: ['Together.ai', 'ElevenLabs', 'Supabase', 'PWA', 'React', 'TypeScript', 'Tailwind CSS'],
+      problem: 'Traditional journaling lacks emotional insights and personalized feedback',
+      solution: 'Built an AI-powered diary app with voice recording, sentiment analysis, and personalized AI companion using Together.ai, ElevenLabs, and Supabase',
+      impact: 'PWA with offline support, real-time emotion tracking, and 95% user satisfaction',
+      technologies: ['Together.ai', 'ElevenLabs', 'Supabase', 'PWA', 'React', 'TypeScript'],
       liveUrl: 'https://superlative-treacle-ce6a5f.netlify.app/',
       githubUrl: 'https://github.com/Mohammed0Arfath/Memorify-App',
       docsUrl: 'https://drive.google.com/file/d/1xn0_ahtkpnWDc17zI-t__jneOCEhtQqI/view?usp=sharing',
@@ -24,35 +24,33 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       featured: true,
       badge: 'Built with Bolt.new',
       color: 'from-purple-500 to-pink-500',
-      thumbnail: '/Memorify_rs.jpg',
+      thumbnail: '/Memorify_rs.png',
       fallbackGradient: 'from-purple-600 to-pink-600',
-      metrics: ['95% User Satisfaction', 'Real-time Processing', 'PWA Support', '24/7 AI Companion'],
-      techStack: ['React', 'TypeScript', 'Supabase', 'AI/ML']
+      metrics: ['95% User Satisfaction', 'Real-time Processing', 'PWA Support']
     },
     {
       title: 'Sign Language ChatBot',
       subtitle: 'Real-time Gesture Recognition System',
-      problem: 'Communication barriers exist for the deaf and hard-of-hearing community, limiting their ability to interact with digital systems and access real-time assistance.',
-      solution: 'Developed a real-time AI chatbot using OpenCV for gesture capture, custom CNN for sign recognition trained on ASL datasets, and Gemini API for intelligent conversational responses.',
-      impact: 'Achieved 94% accuracy across 50-sign vocabulary with 20 FPS real-time processing, enabling seamless communication for deaf users.',
-      technologies: ['OpenCV', 'CNN', 'Gemini API', 'Python', 'Computer Vision', 'TensorFlow', 'MediaPipe'],
+      problem: 'Communication barriers exist for the deaf and hard-of-hearing community',
+      solution: 'Developed a real-time AI chatbot using OpenCV for gesture capture, custom CNN for sign recognition, and Gemini API for intelligent responses',
+      impact: '94% accuracy, 50-sign vocabulary, 20 FPS real-time processing',
+      technologies: ['OpenCV', 'CNN', 'Gemini API', 'Python', 'Computer Vision'],
       liveUrl: '#',
-      githubUrl: 'https://colab.research.google.com/drive/1yp6shGA5GAqfUykisbJF9D8rsg-XsQZk?usp=sharing',
+      githubUrl: 'https://github.com/Mohammed0Arfath',
       docsUrl: 'https://drive.google.com/file/d/1kZL5qtAMu8zNBPN7g6OCOMTXEbmbrDor/view?usp=sharing',
       icon: MessageSquare,
       color: 'from-blue-500 to-cyan-500',
       thumbnail: '/Sign Language.png',
       fallbackGradient: 'from-blue-600 to-cyan-600',
-      metrics: ['94% Accuracy', '50 Sign Vocabulary', '20 FPS Processing', 'Real-time Translation'],
-      techStack: ['Python', 'OpenCV', 'TensorFlow', 'Computer Vision']
+      metrics: ['94% Accuracy', '50 Sign Vocabulary', '20 FPS Processing']
     },
     {
       title: 'Crowd Demographics Analysis',
       subtitle: 'AI-Powered Public Safety Insights',
-      problem: 'Limited real-time demographic analysis capabilities for public safety, crowd management, and security applications in high-traffic areas.',
-      solution: 'Implemented deep learning system using UTKFace dataset and Vision Transformers for accurate age/gender classification in crowd scenarios with real-time processing capabilities.',
-      impact: 'Achieved 89% accuracy on diverse demographics with real-time crowd analysis, enabling better resource allocation and safety management.',
-      technologies: ['UTKFace Dataset', 'Vision Transformers', 'Python', 'Computer Vision', 'Deep Learning', 'PyTorch'],
+      problem: 'Limited real-time demographic analysis for public safety and crowd management',
+      solution: 'Implemented deep learning system using UTKFace dataset and Vision Transformers for age/gender classification in crowd scenarios',
+      impact: '89% accuracy on diverse demographics, real-time crowd analysis capabilities',
+      technologies: ['UTKFace Dataset', 'Vision Transformers', 'Python', 'Computer Vision', 'Deep Learning'],
       liveUrl: '#',
       githubUrl: 'https://colab.research.google.com/drive/1gems3ffsOroOuZ5mFdxzKi4eYwF5bDY4?usp=sharing',
       docsUrl: 'https://drive.google.com/file/d/1konMNtpN6-lG8YbTaNjmsO34Ta4LqHY1/view?usp=sharing',
@@ -60,16 +58,15 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       color: 'from-green-500 to-teal-500',
       thumbnail: '/Crowd.png',
       fallbackGradient: 'from-green-600 to-teal-600',
-      metrics: ['89% Accuracy', 'Real-time Analysis', 'Multi-demographic Support', 'Scalable Architecture'],
-      techStack: ['Python', 'PyTorch', 'Computer Vision', 'Deep Learning']
+      metrics: ['89% Accuracy', 'Real-time Analysis', 'Multi-demographic Support']
     },
     {
       title: 'FruitVision ML System',
       subtitle: 'Advanced Quality Classification',
-      problem: 'Manual fruit quality assessment in agriculture and retail is time-consuming, inconsistent, and prone to human error, leading to economic losses.',
-      solution: 'Built computer vision system using EfficientNet architecture, Local Binary Patterns (LBP), and Gray-Level Co-occurrence Matrix (GLCM) for automated fruit quality classification.',
-      impact: 'Achieved 92% classification accuracy with 10x faster processing than manual inspection, reducing quality control costs significantly.',
-      technologies: ['EfficientNet', 'LBP', 'GLCM', 'Machine Learning', 'Image Processing', 'Scikit-learn'],
+      problem: 'Manual fruit quality assessment is time-consuming and inconsistent',
+      solution: 'Built computer vision system using EfficientNet, LBP, and GLCM for automated fruit quality classification with high precision',
+      impact: '92% classification accuracy, 10x faster than manual inspection',
+      technologies: ['EfficientNet', 'LBP', 'GLCM', 'Machine Learning', 'Image Processing'],
       liveUrl: '#',
       githubUrl: 'https://colab.research.google.com/drive/1ofMCPDc8hs8FOoIL1UDX8wXzswsWCB32?usp=sharing',
       docsUrl: 'https://drive.google.com/file/d/1DvsfsQ2OnpL5P7094SfVYwjaMrKVFdrK/view?usp=sharing',
@@ -77,16 +74,15 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       color: 'from-orange-500 to-red-500',
       thumbnail: '/FruitVison.png',
       fallbackGradient: 'from-orange-600 to-red-600',
-      metrics: ['92% Accuracy', '10x Faster Processing', 'Automated QC', 'Cost Reduction'],
-      techStack: ['Python', 'Machine Learning', 'Computer Vision', 'Scikit-learn']
+      metrics: ['92% Accuracy', '10x Faster', 'Automated Quality Control']
     },
     {
       title: 'Real-time Facial Recognition',
       subtitle: 'High-Performance Security System',
-      problem: 'Need for accurate, real-time facial recognition for security applications that can handle varying lighting conditions and multiple faces simultaneously.',
-      solution: 'Developed facial recognition system with YuNet face detection, advanced thresholding algorithms, and voting prediction mechanisms for robust identification.',
-      impact: 'Achieved 96% recognition accuracy with sub-second processing time, robust performance across different lighting conditions and angles.',
-      technologies: ['OpenCV', 'YuNet Face Detection', 'Python', 'Computer Vision', 'Real-time Processing', 'NumPy'],
+      problem: 'Need for accurate, real-time facial recognition for security applications',
+      solution: 'Developed facial recognition system with YuNet face detection, advanced thresholding, and voting prediction algorithms',
+      impact: '96% recognition accuracy, sub-second processing time, robust to lighting variations',
+      technologies: ['OpenCV', 'YuNet Face Detection', 'Python', 'Computer Vision', 'Real-time Processing'],
       liveUrl: '#',
       githubUrl: 'https://colab.research.google.com/drive/1yp6shGA5GAqfUykisbJF9D8rsg-XsQZk?usp=sharing',
       docsUrl: 'https://drive.google.com/file/d/1x4QtproMytVBejcZy08rsektDisGqfpq/view?usp=sharing',
@@ -94,8 +90,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       color: 'from-indigo-500 to-purple-500',
       thumbnail: '/Face Recognition.png',
       fallbackGradient: 'from-indigo-600 to-purple-600',
-      metrics: ['96% Accuracy', 'Sub-second Processing', 'Lighting Robust', 'Multi-face Detection'],
-      techStack: ['Python', 'OpenCV', 'Computer Vision', 'Real-time Processing']
+      metrics: ['96% Accuracy', 'Sub-second Processing', 'Lighting Robust']
     }
   ];
 
@@ -109,25 +104,6 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     setImageErrors(prev => ({ ...prev, [projectTitle]: false }));
     setImageLoaded(prev => ({ ...prev, [projectTitle]: true }));
     console.log(`✅ Image loaded successfully for: ${projectTitle}`);
-  };
-
-  const getTechBadgeColor = (tech: string) => {
-    const techColors: Record<string, string> = {
-      'React': 'from-blue-400 to-blue-600',
-      'TypeScript': 'from-blue-500 to-blue-700',
-      'Python': 'from-yellow-400 to-yellow-600',
-      'OpenCV': 'from-green-400 to-green-600',
-      'TensorFlow': 'from-orange-400 to-orange-600',
-      'PyTorch': 'from-red-400 to-red-600',
-      'Computer Vision': 'from-purple-400 to-purple-600',
-      'AI/ML': 'from-pink-400 to-pink-600',
-      'Supabase': 'from-emerald-400 to-emerald-600',
-      'Machine Learning': 'from-indigo-400 to-indigo-600',
-      'Deep Learning': 'from-violet-400 to-violet-600',
-      'Real-time Processing': 'from-cyan-400 to-cyan-600',
-      'Scikit-learn': 'from-amber-400 to-amber-600'
-    };
-    return techColors[tech] || 'from-gray-400 to-gray-600';
   };
 
   return (
@@ -153,7 +129,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
             {projects.map((project, index) => (
               <div
                 key={project.title}
-                className={`group relative overflow-hidden rounded-2xl backdrop-blur-lg border transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl ${
+                className={`group relative overflow-hidden rounded-2xl backdrop-blur-lg border transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
                   project.featured 
                     ? (darkMode 
                         ? 'bg-gradient-to-br from-slate-800/90 to-slate-700/90 border-blue-400/30 ring-2 ring-blue-400/20' 
@@ -164,8 +140,8 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                 }`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                {/* Project Thumbnail Container - 2:1 Aspect Ratio */}
-                <div className="relative w-full aspect-[2/1] overflow-hidden">
+                {/* Project Thumbnail Container */}
+                <div className="relative h-48 overflow-hidden">
                   {/* Always show fallback gradient background */}
                   <div className={`absolute inset-0 w-full h-full bg-gradient-to-br ${project.fallbackGradient} flex items-center justify-center`}>
                     <div className="text-center">
@@ -195,6 +171,10 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                         loading="lazy"
                         onError={() => handleImageError(project.title)}
                         onLoad={() => handleImageLoad(project.title)}
+                        style={{
+                          minHeight: '192px',
+                          maxHeight: '192px'
+                        }}
                       />
                     </>
                   )}
@@ -248,13 +228,12 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                     <div className={`p-4 rounded-lg border-l-4 border-red-400 ${
                       darkMode ? 'bg-red-500/10' : 'bg-red-50'
                     }`}>
-                      <h4 className={`font-semibold text-sm mb-2 flex items-center ${
+                      <h4 className={`font-semibold text-sm mb-1 ${
                         darkMode ? 'text-red-300' : 'text-red-700'
                       }`}>
-                        <Target className="w-4 h-4 mr-2" />
                         Problem
                       </h4>
-                      <p className={`text-sm leading-relaxed ${
+                      <p className={`text-sm ${
                         darkMode ? 'text-slate-300' : 'text-slate-600'
                       }`}>
                         {project.problem}
@@ -264,13 +243,12 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                     <div className={`p-4 rounded-lg border-l-4 border-blue-400 ${
                       darkMode ? 'bg-blue-500/10' : 'bg-blue-50'
                     }`}>
-                      <h4 className={`font-semibold text-sm mb-2 flex items-center ${
+                      <h4 className={`font-semibold text-sm mb-1 ${
                         darkMode ? 'text-blue-300' : 'text-blue-700'
                       }`}>
-                        <Zap className="w-4 h-4 mr-2" />
                         Solution
                       </h4>
-                      <p className={`text-sm leading-relaxed ${
+                      <p className={`text-sm ${
                         darkMode ? 'text-slate-300' : 'text-slate-600'
                       }`}>
                         {project.solution}
@@ -280,13 +258,12 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                     <div className={`p-4 rounded-lg border-l-4 border-green-400 ${
                       darkMode ? 'bg-green-500/10' : 'bg-green-50'
                     }`}>
-                      <h4 className={`font-semibold text-sm mb-2 flex items-center ${
+                      <h4 className={`font-semibold text-sm mb-1 ${
                         darkMode ? 'text-green-300' : 'text-green-700'
                       }`}>
-                        <Award className="w-4 h-4 mr-2" />
                         Impact
                       </h4>
-                      <p className={`text-sm leading-relaxed ${
+                      <p className={`text-sm ${
                         darkMode ? 'text-slate-300' : 'text-slate-600'
                       }`}>
                         {project.impact}
@@ -301,14 +278,14 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                     }`}>
                       Key Metrics
                     </h4>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="flex flex-wrap gap-2">
                       {project.metrics.map((metric) => (
                         <span
                           key={metric}
-                          className={`px-3 py-2 rounded-lg text-xs font-medium text-center ${
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${
                             darkMode 
-                              ? 'bg-green-500/20 text-green-300 border border-green-400/30' 
-                              : 'bg-green-100 text-green-700 border border-green-200'
+                              ? 'bg-green-500/20 text-green-300' 
+                              : 'bg-green-100 text-green-700'
                           }`}
                         >
                           {metric}
@@ -317,26 +294,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                     </div>
                   </div>
 
-                  {/* Tech Stack Badges */}
-                  <div className="mb-6">
-                    <h4 className={`font-semibold text-sm mb-3 ${
-                      darkMode ? 'text-white' : 'text-slate-900'
-                    }`}>
-                      Tech Stack
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getTechBadgeColor(tech)} text-white shadow-lg hover:scale-105 transition-transform`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Technologies Used */}
+                  {/* Technologies */}
                   <div className="mb-6">
                     <h4 className={`font-semibold text-sm mb-3 ${
                       darkMode ? 'text-white' : 'text-slate-900'
@@ -349,8 +307,8 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                           key={tech}
                           className={`px-3 py-1 rounded-full text-xs font-medium ${
                             darkMode 
-                              ? 'bg-slate-700 text-slate-300 border border-slate-600' 
-                              : 'bg-slate-100 text-slate-700 border border-slate-200'
+                              ? 'bg-slate-700 text-slate-300' 
+                              : 'bg-slate-100 text-slate-700'
                           }`}
                         >
                           {tech}
@@ -396,7 +354,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                       }`}
                     >
                       <FileText className="w-4 h-4 mr-2" />
-                      Documentation
+                      Docs
                     </a>
                   </div>
                 </div>
